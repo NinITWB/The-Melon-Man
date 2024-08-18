@@ -18,6 +18,13 @@ var game = {
 	sounds: {
 		jump: new Audio('sounds/jump.wav')
 	},
+	characterVisual: {
+		texturesPath: "Knight.png",
+		tileWidth: 24, 
+		tileHeight: 24,
+		canvasWidth: window.innerWidth / 3,
+		canvasHeight: window.innerHeight / 3
+	},
 	options: {
 		texturesPath: "textures.png",
 		tileWidth: 24,
@@ -42,6 +49,8 @@ var game = {
 
 		this.textures.src = this.options.texturesPath
 		this.textures.onload = onInit
+		this.characterVisual.textures = new Image();
+		this.characterVisual.textures.src = this.characterVisual.texturesPath;
 	},
 	map: {
 		structures: []

@@ -23,17 +23,25 @@ game.drawStructure = function (name, x, y) {
 
 game.drawPlayer = function () {
 	actualPlayerTile = game.player.animations[game.player.direction][game.player.animationFrameNumber % 4]
+	game.context.save()
+	scaleX = game.player.lastDirection === "left" ? -1 : 1
+	game.context.scale(scaleX, 1)
 	game.context.drawImage(
-		game.textures,
-		actualPlayerTile.tileColumn * game.options.tileWidth,
-		actualPlayerTile.tileRow * game.options.tileHeight,
-		game.options.tileWidth,
-		game.options.tileHeight,
-		Math.round(game.options.canvasWidth / 2 - game.options.tileWidth / 2),
-		Math.round(game.options.canvasHeight / 2 - game.options.tileHeight / 2),
-		game.options.tileWidth,
-		game.options.tileHeight
+		game.characterVisual.textures,
+    	actualPlayerTile.tileColumn * game.characterVisual.tileWidth,
+    	actualPlayerTile.tileRow * game.characterVisual.tileHeight,
+    	game.characterVisual.tileWidth,
+    	game.characterVisual.tileHeight,
+    	game.player.lastDirection === "left" ? -Math.round(
+          game.characterVisual.canvasWidth / 2 + game.characterVisual.tileWidth / 2,
+        ) : Math.round(
+          game.characterVisual.canvasWidth / 2 - game.characterVisual.tileWidth / 2,
+        ),
+    Math.round(game.characterVisual.canvasHeight / 2 - game.characterVisual.tileHeight / 2),
+    game.characterVisual.tileWidth,
+    game.characterVisual.tileHeight,
 	)
+	game.context.restore();
 }
 
 game.redraw = function () {
