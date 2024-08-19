@@ -1,7 +1,7 @@
 game.player = {
 		x: 54,
 		y: 0,
-		height: 24,
+		height: 64,
 		highestY: 0,
 		direction: "left",
 		isInAir: false,

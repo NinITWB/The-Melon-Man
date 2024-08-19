@@ -23,11 +23,18 @@ var game = {
 		jump: new Audio('sounds/jump.wav')
 	},
 	characterVisual: {
-		texturesPath: "Knight.png",
-		tileWidth: 24, 
-		tileHeight: 24,
+		texturesPath: "human.png",
+		tileWidth: 64, 
+		tileHeight: 64,
 		canvasWidth: window.innerWidth / 3,
 		canvasHeight: window.innerHeight / 3
+	},
+	fireball: {
+		texturesPath: "FireBall.png",
+		tileWidth: 64,
+		tileHeight: 64,
+		canvasWidth: window.innerWidth / 3.5,
+		canvasHeight: window.innerHeight / 3.5
 	},
 	options: {
 		texturesPath: "textures.png",
@@ -53,11 +60,14 @@ var game = {
 
 		this.textures.src = this.options.texturesPath
 		this.textures.onload = onInit
-		this.characterVisual.textures = new Image();
-		this.characterVisual.textures.src = this.characterVisual.texturesPath;
+		this.characterVisual.textures = new Image()
+		this.characterVisual.textures.src = this.characterVisual.texturesPath
+		this.fireball.textures = new Image()
+		this.fireball.textures.src = this.fireball.texturesPath
 	},
 	map: {
-		structures: []
+		structures: [],
+		fireballsList: [],
 	},
 	isOver: false
 }
