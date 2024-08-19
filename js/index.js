@@ -13,6 +13,10 @@ var game = {
 			'trees': {
 				image: new Image(),
 				loaded: false
+			},
+			'buildings': {
+				image : new Image(),
+				loaded: false
 			}
 	},
 	sounds: {
@@ -38,8 +42,8 @@ var game = {
 		this.canvas.height = this.options.canvasHeight
 		this.context.imageSmoothingEnabled = false
 
-    this.backgrounds['sky'].image.src = "background.png"
-		this.backgrounds['trees'].image.src = "trees.png"
+    this.backgrounds['sky'].image.src = "background_mountains.png"
+		this.backgrounds['buildings'].image.src = "buildings-layer.png"
 
 		for (var key in this.backgrounds) {
 			this.backgrounds[key].image.onload = function (currentKey) {

@@ -8,10 +8,6 @@ game.moveLeft = function () {
 	game.clearMoveIntervals()
 	game.player.lastDirection = "left";
 	game.player.moveLeftInterval = setInterval(function () {
-		if (game.player.direction == "idle") {
-			game.player.direction = "left";
-			game.player.animationFrameNumber = 0;
-		}
 		for (var i = 1; i < 120; i++) {
 			setTimeout(function () {
 				// Player can't move faster if there's friction from the ground
@@ -23,7 +19,7 @@ game.moveLeft = function () {
 				game.requestRedraw()
 				if (!game.checkCollisions()) {
 					// Player should fall
-					game.player.fallingJumpjump()
+					game.player.fallingJump()
 				}
 			}, 3 * i)
 		}
@@ -36,10 +32,6 @@ game.moveRight = function () {
 	game.clearMoveIntervals()
 	game.player.lastDirection = "right";
 	game.player.moveRightInterval = setInterval(function () {
-		if (game.player.direction == "idle") {
-			game.player.direction = "right";
-			game.player.animationFrameNumber = 0;
-		}
 		for (var i = 1; i < 120; i++) {
 			setTimeout(function () {
 				if (game.player.isInAir) {
@@ -69,12 +61,10 @@ game.keydown = function (event) {
 		case 65:
 		case 37:
 			game.moveLeft()
-			game.player.direction = "idle";
 			break
 		case 68:
 		case 39:
 			game.moveRight()
-			game.player.direction = "idle";
 			break
 		case 32:
 			game.player.jump()
